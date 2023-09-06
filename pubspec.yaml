@@ -21,6 +21,9 @@ dependencies:
   intl: ^0.18.1
   dio: ^5.0.3
   url_launcher: 6.0.20
+  http: ^0.13.6
+  oauth1: ^2.0.0
+  # dio: ^4.0.0
 dev_dependencies: 
   flutter_test: 
     sdk: flutter
@@ -56,5 +59,3 @@ flutter:
           weight: 400
         - asset: assets/fonts/PlayfairDisplayRomanBold.ttf
           weight: 700
-
-#dependency_overrides: intl: ^0.18.0

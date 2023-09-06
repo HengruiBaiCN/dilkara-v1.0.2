@@ -1,6 +1,7 @@
 import 'package:dilkara/core/app_export.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   CustomButton(
       {this.shape,

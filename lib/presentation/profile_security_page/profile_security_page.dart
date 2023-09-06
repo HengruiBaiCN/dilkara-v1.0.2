@@ -26,6 +26,7 @@ class _ProfileSecurityPageState extends State<ProfileSecurityPage>
   bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
