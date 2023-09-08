@@ -5,6 +5,9 @@ import 'models/product_search_model.dart';
 import 'package:dilkara/core/app_export.dart';
 import 'package:dilkara/widgets/custom_search_view.dart';
 import 'package:flutter/material.dart';
+import 'package:dilkara/widgets/app_bar/appbar_image.dart';
+import 'package:dilkara/widgets/app_bar/appbar_title.dart';
+import 'package:dilkara/widgets/app_bar/custom_app_bar.dart';
 
 class ProductSearchScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
@@ -23,6 +26,98 @@ class ProductSearchScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         resizeToAvoidBottomInset: false,
+
+        // topbar
+        appBar: CustomAppBar(
+          height: getVerticalSize(
+            43,
+          ),
+          leadingWidth: 32,
+          leading: AppbarImage(
+            height: getVerticalSize(
+              16,
+            ),
+            width: getHorizontalSize(
+              20,
+            ),
+            svgPath: ImageConstant.imgMenuBlack900,
+            margin: getMargin(
+              left: 12,
+              top: 1,
+              bottom: 5,
+            ),
+            onTap: () {
+              NavigatorService.navigatorKey.currentState!
+                  .pushNamed(AppRoutes.appNavigationScreen);
+            },
+          ),
+          centerTitle: true,
+          title: AppbarTitle(
+            text: "Dilkara".tr,
+            onTap: () {
+              NavigatorService.navigatorKey.currentState!
+                  .pushNamed(AppRoutes.mainLandingScreen);
+            },
+          ),
+          actions: [
+            AppbarImage(
+              height: getSize(
+                15,
+              ),
+              width: getSize(
+                15,
+              ),
+              svgPath: ImageConstant.imgSearchGray90001,
+              margin: getMargin(
+                left: 16,
+                top: 1,
+                right: 5,
+                bottom: 1,
+              ),
+              onTap: () {
+                NavigatorService.navigatorKey.currentState!
+                    .pushNamed(AppRoutes.productSearchScreen);
+              },
+            ),
+            AppbarImage(
+              height: getVerticalSize(
+                17,
+              ),
+              width: getHorizontalSize(
+                18,
+              ),
+              svgPath: ImageConstant.imgCart,
+              margin: getMargin(
+                left: 10,
+                right: 5,
+              ),
+              onTap: () {
+                NavigatorService.navigatorKey.currentState!
+                    .pushNamed(AppRoutes.cartScreen);
+              },
+            ),
+            AppbarImage(
+              height: getVerticalSize(
+                15,
+              ),
+              width: getHorizontalSize(
+                13,
+              ),
+              svgPath: ImageConstant.imgUser,
+              margin: getMargin(
+                left: 10,
+                top: 1,
+                right: 21,
+                bottom: 1,
+              ),
+              onTap: () {
+                NavigatorService.navigatorKey.currentState!
+                    .pushNamed(AppRoutes.profileProfileInfoTabContainerScreen);
+              },
+            ),
+          ],
+        ),
+
         body: Container(
           width: double.maxFinite,
           padding: getPadding(
@@ -67,6 +162,7 @@ class ProductSearchScreen extends StatelessWidget {
                       ),
                       child: CustomImageView(
                         svgPath: ImageConstant.imgClose,
+                        onTap: () => group5609Controller?.clear(),
                       ),
                     ),
                     suffixConstraints: BoxConstraints(
@@ -77,46 +173,46 @@ class ProductSearchScreen extends StatelessWidget {
                   );
                 },
               ),
-              Padding(
-                padding: getPadding(
-                  left: 5,
-                  top: 29,
-                  right: 5,
-                ),
-                child: BlocSelector<ProductSearchBloc, ProductSearchState,
-                    ProductSearchModel?>(
-                  selector: (state) => state.productSearchModelObj,
-                  builder: (context, productSearchModelObj) {
-                    return GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        mainAxisExtent: getVerticalSize(
-                          199,
-                        ),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: getHorizontalSize(
-                          16,
-                        ),
-                        crossAxisSpacing: getHorizontalSize(
-                          16,
-                        ),
-                      ),
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount:
-                          productSearchModelObj?.list1ItemList.length ?? 0,
-                      itemBuilder: (context, index) {
-                        List1ItemModel model =
-                            productSearchModelObj?.list1ItemList[index] ??
-                                List1ItemModel();
-                        return List1ItemWidget(
-                          model,
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
+              // Padding(
+              //   padding: getPadding(
+              //     left: 5,
+              //     top: 29,
+              //     right: 5,
+              //   ),
+              //   child: BlocSelector<ProductSearchBloc, ProductSearchState,
+              //       ProductSearchModel?>(
+              //     selector: (state) => state.productSearchModelObj,
+              //     builder: (context, productSearchModelObj) {
+              //       return GridView.builder(
+              //         shrinkWrap: true,
+              //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //           mainAxisExtent: getVerticalSize(
+              //             199,
+              //           ),
+              //           crossAxisCount: 2,
+              //           mainAxisSpacing: getHorizontalSize(
+              //             16,
+              //           ),
+              //           crossAxisSpacing: getHorizontalSize(
+              //             16,
+              //           ),
+              //         ),
+              //         physics: NeverScrollableScrollPhysics(),
+              //         itemCount:
+              //             productSearchModelObj?.list1ItemList.length ?? 0,
+              //         itemBuilder: (context, index) {
+              //           List1ItemModel model =
+              //               productSearchModelObj?.list1ItemList[index] ??
+              //                   List1ItemModel();
+              //           return List1ItemWidget(
+              //             model,
+              //           );
+              //         },
+              //       );
+              //     },
+              //   ),
+              // ),
+            ], // Children
           ),
         ),
       ),

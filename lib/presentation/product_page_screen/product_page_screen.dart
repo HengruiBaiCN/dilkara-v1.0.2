@@ -37,7 +37,13 @@ class ProductPageScreen extends StatelessWidget {
                       onTapArrowleft2(context);
                     }),
                 centerTitle: true,
-                title: AppbarTitle(text: "lbl_shopsie".tr)),
+                title: AppbarTitle(
+                  text: "lbl_shopsie".tr,
+                  onTap: () {
+                    NavigatorService.navigatorKey.currentState!
+                        .pushNamed(AppRoutes.appNavigationScreen);
+                  },
+                )),
             body: Container(
                 width: double.maxFinite,
                 padding: getPadding(top: 6, bottom: 6),

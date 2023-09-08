@@ -2,9 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:oauth1/oauth1.dart';
-import 'services/woocommerce_service.dart';
-import 'services/product_service.dart';
+// import 'package:oauth1/oauth1.dart';
+// import 'services/woocommerce_service.dart';
+// import 'services/product_service.dart';
 
 import 'core/app_export.dart';
 
