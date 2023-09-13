@@ -38,7 +38,7 @@ class ProductPageScreen extends StatelessWidget {
                     }),
                 centerTitle: true,
                 title: AppbarTitle(
-                  text: "lbl_shopsie".tr,
+                  text: "Dilkara".tr,
                   onTap: () {
                     NavigatorService.navigatorKey.currentState!
                         .pushNamed(AppRoutes.appNavigationScreen);

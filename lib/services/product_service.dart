@@ -9,10 +9,10 @@ class ProductService {
   ProductService(this.wooCommerceService);
 
   Future<List<dynamic>> fetchProducts() async {
-    final response = await http.get(
-      Uri.parse(
-        "http://your-woocommerce-site.com/wc-api/v3/products", // WooCommerce products endpoint
-      ),
+    final oauth1Client = wooCommerceService.createOAuthClient();
+
+    final response = await oauth1Client.get(
+      "products" as Uri, // WooCommerce products endpoint
     );
 
     if (response.statusCode == 200) {
