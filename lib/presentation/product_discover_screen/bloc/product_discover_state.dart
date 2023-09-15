@@ -3,6 +3,8 @@
 part of 'product_discover_bloc.dart';
 
 class ProductDiscoverState extends Equatable {
+  List<ListItemModel> listItemList = [];
+
   ProductDiscoverState({this.productDiscoverModelObj});
 
   ProductDiscoverModel? productDiscoverModelObj;

@@ -2,6 +2,7 @@
 
 part of 'product_discover_bloc.dart';
 
+
 @immutable
 abstract class ProductDiscoverEvent extends Equatable {}
 
