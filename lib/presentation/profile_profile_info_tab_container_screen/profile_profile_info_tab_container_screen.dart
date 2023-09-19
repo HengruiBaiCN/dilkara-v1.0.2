@@ -1,3 +1,5 @@
+import 'package:http/http.dart';
+
 import 'bloc/profile_profile_info_tab_container_bloc.dart';
 import 'models/profile_profile_info_tab_container_model.dart';
 import 'package:dilkara/core/app_export.dart';
@@ -63,7 +65,14 @@ class _ProfileProfileInfoTabContainerScreenState
                       }),
                   centerTitle: true,
                   title: AppbarTitle(text: "lbl_shopsie".tr),
-                  styleType: Style.bgFillWhiteA700),
+                  styleType: Style.bgFillWhiteA700,
+                  body: Padding(
+                    padding: getPadding(
+                      left: 5,
+                      top: 29,
+                      right: 5,
+                    ),
+                  )),
               body: Container(
                   width: double.maxFinite,
                   child: Column(

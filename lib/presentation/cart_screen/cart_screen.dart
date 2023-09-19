@@ -26,34 +26,39 @@ class CartScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: ColorConstant.whiteA700,
         appBar: CustomAppBar(
-          height: getVerticalSize(
-            64,
-          ),
-          leadingWidth: 39,
-          leading: AppbarImage(
-            height: getSize(
-              24,
+            height: getVerticalSize(
+              64,
             ),
-            width: getSize(
-              24,
+            leadingWidth: 39,
+            leading: AppbarImage(
+              height: getSize(
+                24,
+              ),
+              width: getSize(
+                24,
+              ),
+              svgPath: ImageConstant.imgMenuBlack900,
+              margin: getMargin(
+                left: 15,
+                top: 18,
+                bottom: 22,
+              ),
             ),
-            svgPath: ImageConstant.imgMenuBlack900,
-            margin: getMargin(
-              left: 15,
-              top: 18,
-              bottom: 22,
+            centerTitle: true,
+            title: AppbarTitle(
+              text: "Dilkara".tr,
+              onTap: () {
+                NavigatorService.navigatorKey.currentState!
+                    .pushNamed(AppRoutes.mainLandingScreen);
+              },
             ),
-          ),
-          centerTitle: true,
-          title: AppbarTitle(
-            text: "Dilkara".tr,
-            onTap: () {
-              NavigatorService.navigatorKey.currentState!
-                  .pushNamed(AppRoutes.mainLandingScreen);
-            },
-          ),
-          styleType: Style.bgFillWhiteA700,
-        ),
+            styleType: Style.bgFillWhiteA700,
+            body: Padding(
+              padding: getPadding(
+                top: 16,
+                bottom: 16,
+              ),
+            )),
         body: Container(
           width: double.maxFinite,
           padding: getPadding(

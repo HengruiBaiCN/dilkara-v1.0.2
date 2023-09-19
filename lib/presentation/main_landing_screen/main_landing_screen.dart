@@ -20,6 +20,7 @@ import 'package:dilkara/widgets/custom_button.dart';
 import 'package:dilkara/widgets/custom_drop_down.dart';
 import 'package:dilkara/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import '../main_landing_screen/widgets/home_categories_widget.dart';
 
 class MainLandingScreen extends StatelessWidget {
   static Widget builder(BuildContext context) {
@@ -128,6 +129,13 @@ class MainLandingScreen extends StatelessWidget {
               },
             ),
           ],
+          body: Padding(
+            padding: getPadding(
+              left: 16,
+              top: 5,
+              right: 16,
+            ),
+          ),
         ),
 
         // child: Column( navigatorKey: NavigatorService.navigatorKey,
@@ -183,22 +191,46 @@ class MainLandingScreen extends StatelessWidget {
           ),
         ),
 
-        // body: SingleChildScrollView(
-        body: Column(
-          children: [
-            Container(
-              child:
-                  Title(color: Colors.lightBlue, child: Text('Our Products')),
-            ),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Align(
-                    alignment: Alignment.topLeft, child: Text('RECOMMENDED'))),
-            Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Align(
-                    alignment: Alignment.topLeft, child: Text('Hair Care'))),
-          ],
+        body: Container(
+          color: ColorConstant.whiteA700,
+          child: ListView(
+            children: [
+              imageCarousel(context),
+              WidgetCategories(),
+            ],
+          ),
+        ),
+        // body: Column(
+        //   children: [
+        //     Container(
+        //       child:
+        //           Title(color: Colors.lightBlue, child: Text('Our Products')),
+        //     ),
+        //     Padding(
+        //         padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        //         child: Align(
+        //             alignment: Alignment.topLeft, child: Text('RECOMMENDED'))),
+        //     Padding(
+        //         padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        //         child: Align(
+        //             alignment: Alignment.topLeft, child: Text('Hair Care'))),
+        //   ],
+        // ),
+      ),
+    );
+  }
+
+  Widget imageCarousel(BuildContext context) {
+    return new Container(
+      width: MediaQuery.of(context).size.width,
+      height: 200.0,
+      child: new CarouselSlider(
+        // TODO: we need to add images here
+        items: [],
+        options: CarouselOptions(
+          autoPlay: true,
+          aspectRatio: 2.0,
+          enlargeCenterPage: true,
         ),
       ),
     );

@@ -38,12 +38,14 @@ class ProductPageScreen extends StatelessWidget {
                     }),
                 centerTitle: true,
                 title: AppbarTitle(
-                  text: "Dilkara".tr,
+                  text: "lbl_shopsie".tr,
                   onTap: () {
                     NavigatorService.navigatorKey.currentState!
                         .pushNamed(AppRoutes.appNavigationScreen);
                   },
-                )),
+                ),
+                body:
+                    Padding(padding: getPadding(left: 16, top: 5, right: 16))),
             body: Container(
                 width: double.maxFinite,
                 padding: getPadding(top: 6, bottom: 6),

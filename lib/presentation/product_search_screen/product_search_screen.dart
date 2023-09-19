@@ -116,6 +116,12 @@ class ProductSearchScreen extends StatelessWidget {
               },
             ),
           ],
+          body: Padding(
+              padding: getPadding(
+            left: 16,
+            top: 5,
+            right: 16,
+          )),
         ),
 
         body: Container(
