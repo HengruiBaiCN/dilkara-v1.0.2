@@ -1,4 +1,4 @@
-import 'dart:html';
+// import 'dart:html';
 
 import '../product_discover_screen/widgets/list_item_widget.dart';
 import 'bloc/product_discover_bloc.dart';
@@ -22,7 +22,7 @@ class ProductDiscoverScreen extends StatefulWidget {
         productDiscoverModelObj: ProductDiscoverModel(),
       ))
         ..add(ProductDiscoverInitialEvent()),
-      child: ProductDiscoverScreen(apiService),
+      child: ProductDiscoverScreen(WooCommerceService()),
     );
   }
 
@@ -32,15 +32,17 @@ class ProductDiscoverScreen extends StatefulWidget {
 
 class _ProductDiscoverScreenState extends State {
   late Future<List<Map<String, dynamic>>> products;
+  // late WooCommerceService apiService;
 
   @override
   void initState() {
     super.initState();
     products = fetchAndParseProducts();
+    // apiService = WooCommerceService();
   }
 
   Future<List<Map<String, dynamic>>> fetchAndParseProducts() async {
-    final response = await widget.apiService.fetchProducts();
+    final response = await WooCommerceService().fetchProducts();
 
     if (response is Map<String, dynamic> && response.containsKey('products')) {
       // Handle the map structure here and extract the list of products
