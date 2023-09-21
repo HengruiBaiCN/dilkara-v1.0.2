@@ -1,20 +1,20 @@
 // import 'dart:html';
 
-import '../product_discover_screen/widgets/list_item_widget.dart';
+// import '../product_discover_screen/widgets/list_item_widget.dart';
 import 'bloc/product_discover_bloc.dart';
 import 'models/list_item_model.dart';
 import 'models/product_discover_model.dart';
 import 'package:dilkara/core/app_export.dart';
 import 'package:dilkara/widgets/app_bar/appbar_image.dart';
-import 'package:dilkara/widgets/app_bar/appbar_title.dart';
+// import 'package:dilkara/widgets/app_bar/appbar_title.dart';
 import 'package:dilkara/widgets/app_bar/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:dilkara/services/woocommerce_service.dart';
 
 class ProductDiscoverScreen extends StatefulWidget {
-  final WooCommerceService apiService;
+  // final WooCommerceService apiService;
 
-  ProductDiscoverScreen(this.apiService);
+  // ProductDiscoverScreen(this.apiService);
 
   static Widget builder(BuildContext context) {
     return BlocProvider<ProductDiscoverBloc>(
@@ -22,7 +22,7 @@ class ProductDiscoverScreen extends StatefulWidget {
         productDiscoverModelObj: ProductDiscoverModel(),
       ))
         ..add(ProductDiscoverInitialEvent()),
-      child: ProductDiscoverScreen(WooCommerceService()),
+      child: ProductDiscoverScreen(),
     );
   }
 
@@ -46,7 +46,7 @@ class _ProductDiscoverScreenState extends State {
 
     if (response is Map<String, dynamic> && response.containsKey('products')) {
       // Handle the map structure here and extract the list of products
-      final productList = response['products'] as List<dynamic>;
+      final productList = response['products'] as List<ListItemModel>;
       return productList.cast<Map<String, dynamic>>().toList();
     } else {
       // Handle the case where the response is not as expected

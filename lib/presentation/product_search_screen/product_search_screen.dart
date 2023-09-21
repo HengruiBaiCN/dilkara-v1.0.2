@@ -1,6 +1,6 @@
-import '../product_search_screen/widgets/list1_item_widget.dart';
+// import '../product_search_screen/widgets/list1_item_widget.dart';
 import 'bloc/product_search_bloc.dart';
-import 'models/list1_item_model.dart';
+// import 'models/list1_item_model.dart';
 import 'models/product_search_model.dart';
 import 'package:dilkara/core/app_export.dart';
 import 'package:dilkara/widgets/custom_search_view.dart';

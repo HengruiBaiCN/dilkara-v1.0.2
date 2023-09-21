@@ -3,48 +3,32 @@ class Category {
   String? categoryName;
   String? categoryDescription;
   int? parentCategoryId;
-  String? categoryImage;
-  // Image categoryImage;
+  // String? categoryImage;
+  // Image? categoryImage;
 
   Category({
     this.categoryId,
     this.categoryDescription,
     this.categoryName,
-    this.categoryImage,
+    // this.categoryImage,
     this.parentCategoryId,
   });
 
-  Category.fromJson(Map<String, dynamic> json) {
-    categoryId = json['id'];
-    categoryDescription = json['description'];
-    categoryName = json['name'];
-    parentCategoryId = json['parent'];
-    categoryImage = json['image'];
-    // categoryImage = (json['image'] != null ? new Image.fromJson(json['image']) : null)!;
-  }
+  // Category.fromJson(Map<String, dynamic> json) {
+  //   categoryId = json['id'];
+  //   categoryDescription = json['description'];
+  //   categoryName = json['name'];
+  //   parentCategoryId = json['parent'];
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = categoryId;
-    data['description'] = categoryDescription;
-    data['name'] = categoryName;
-    data['parent'] = parentCategoryId;
-    data['image'] = categoryImage;
-    // if (this.categoryImage != null) {
-    //   data['image'] = this.categoryImage.toJson();
-    // }
-    return data;
-  }
+  //   // categoryImage =
+  //   //     json['image'] != null ? new Image.fromJson(json['image']) : null;
+  // }
 }
 
 // class Image {
-//   String src;
+//   String url;
 
-//   Image({required this.src});
+//   Image({required this.url});
 
-//   Image.fromJson(Map<String, dynamic> json) {
-//     src = json['src'];
-//   }
+//   Image.fromJson(Map<String, dynamic> json) : url = json['src'];
 // }
-
-

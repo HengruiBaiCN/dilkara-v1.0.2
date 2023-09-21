@@ -10,12 +10,9 @@ class WidgetCategories extends StatefulWidget {
 }
 
 class _WidgetCategoriesState extends State<WidgetCategories> {
-  late WooCommerceService apiService;
-
   @override
   void initState() {
     super.initState();
-    // apiService = new WooCommerceService();
   }
 
   @override
@@ -36,32 +33,50 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
                 padding: EdgeInsets.only(left: 10, top: 4),
                 child: Text(
                   'View All',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, color: Colors.blue),
                 )),
           ],
-        )
+        ),
+        _buildCategoryList(await fetchAndParseCategories())
       ]),
     );
   }
 
-  Widget _categoryList() {
-    return FutureBuilder(
-      future: apiService.fetchCategories(), //fetchAndParseProducts(),
-      builder: (context, snapshot) => snapshot.hasData
-          ? _buildCategoryList(snapshot.data as List<Category>)
-          : Center(child: CircularProgressIndicator()),
-      // builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
-      //   if (snapshot.hasData) {
-      //     List<Category> categories = snapshot.data!
-      //         .map((dynamic item) => Category.fromJson(item))
-      //         .toList();
-      //     return _buildCategoryList(categories);
-      //   } else {
-      //     return Center(child: CircularProgressIndicator());
-      //   }
-      // },
-    );
+  Future<List<Category>> fetchAndParseCategories() async {
+    final response = await WooCommerceService().fetchCategories();
+
+    List<Category> data = [];
+
+    if (response.isNotEmpty) {
+      // Handle the map structure here and extract the list of products
+      data.addAll(response);
+      // final productList = response['products'] as List<Category>;
+      return data;
+    } else {
+      // Handle the case where the response is not as expected
+      throw Exception('Unexpected API response format');
+    }
   }
+
+  // Widget _categoryList() {
+  //   return FutureBuilder(
+  //     future: WooCommerceService().fetchCategories(),
+  //     builder: (BuildContext context, snapshot) {
+  //       print(snapshot);
+  //       if (snapshot.connectionState == ConnectionState.waiting) {
+  //         return Center(child: CircularProgressIndicator());
+  //       } else if (snapshot.hasError) {
+  //         print('it has error');
+  //         return Text('Error: ${snapshot.error}');
+  //       } else {
+  //         final categorylist = snapshot.data as List<Category>;
+  //         print('asdasdsadsadsadddddddddd');
+  //         print(categorylist);
+  //         return _buildCategoryList(categorylist);
+  //       }
+  //     },
+  //   );
+  // }
 
   Widget _buildCategoryList(List<Category> categories) {
     return Container(
@@ -81,10 +96,10 @@ class _WidgetCategoriesState extends State<WidgetCategories> {
                 width: 100,
                 margin: EdgeInsets.all(10),
                 alignment: Alignment.center,
-                child: Image.network(
-                  data.categoryImage.toString(),
-                  height: 80,
-                ),
+                // child: Image.network(
+                //   data.categoryImage.toString(),
+                //   height: 80,
+                // ),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.white,
