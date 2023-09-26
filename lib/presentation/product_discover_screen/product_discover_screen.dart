@@ -46,7 +46,7 @@ class _ProductDiscoverScreenState extends State {
 
     if (response is Map<String, dynamic> && response.containsKey('products')) {
       // Handle the map structure here and extract the list of products
-      final productList = response['products'] as List<ListItemModel>;
+      final productList = response['products'] as List<dynamic>;
       return productList.cast<Map<String, dynamic>>().toList();
     } else {
       // Handle the case where the response is not as expected
@@ -83,7 +83,7 @@ class _ProductDiscoverScreenState extends State {
             return Text('Error: ${snapshot.error}');
           } else {
             final productList = snapshot.data as List<dynamic>;
-            return ListView.builder(
+            return GridView.builder(
               itemCount: productList.length,
               itemBuilder: (context, index) {
                 final product = productList[index];
@@ -93,6 +93,10 @@ class _ProductDiscoverScreenState extends State {
                   subtitle: Text('\$${product['price'] ?? '0.00'}'),
                 );
               },
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.7,
+              ),
             );
           }
         },

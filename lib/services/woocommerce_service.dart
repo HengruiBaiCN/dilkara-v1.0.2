@@ -26,11 +26,12 @@ class WooCommerceService {
     }
   }
 
-  Future<List<Category>> fetchCategories() async {
-    List<Category> categories = [];
+  Future<dynamic> fetchCategories() async {
+    // List<Category> categories = [];
 
     final response = await http.get(
-      Uri.parse("https://dilkara.com.au/wc-api/v3/products/categories"),
+      Uri.parse(
+          "https://dilkara.com.au/wc-api/v3/products/categories?per_page=66"),
       headers: {
         'Authorization':
             'Basic ${base64Encode(utf8.encode('$consumerKey:$consumerSecret'))}',
@@ -41,6 +42,7 @@ class WooCommerceService {
       // categories = (json.decode(response.body) as List)
       //     .map((i) => Category.fromJson(i))
       //     .toList();
+      print('i am fetching categories');
       return json.decode(response.body);
     } else {
       throw Exception('Failed to load products');
